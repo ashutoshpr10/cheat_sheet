@@ -48,4 +48,67 @@
   git log --oneline # shows 7 digit git commit id
   git show XXXX # using 4 digit git commit id we can the info about the commit
 
+#  ---  Git referneces and HEAD reference --- #
+
+# head reference points to current  commit only.
+# use of ( ~ | ^)
+    git show HEAD~   #to show parent of latest commit.
+    git show [HEAD~~ | HEAD ~2]  # to show parent of parent commint.
+    git show HEAD^  # shows the parent commint
+    git show HEAD^^ #show the parent of parent commit.
+    git show HEAD^2 #show sendon parent if exits otherewise it will throw error.
+
+# TAGs
+  git tag #to view tag
+  git tag -a -m "message" <tag id>  <commit> 
+  #attches tag to specific commit if commit id is not provided it attach tag to HEAD commit.
+  git push origin <tag id> #Push the tag to the remote repository
+  git tag -d <tag id>      # to delete tag
+
+# -- Git Branch command ---#
+
+  git branch <branch name>
+  git checkout <branch name>
+
+  # Create branc and checkout 
+  git checkout -b <branch name>
+  
+  # Delete branch only not commit
+  git branch -d <branch name>
+
+  # Delte branch parmanently with commit
+  git branch -D <branch name>
+
+
+# --- Git Merge command ---#
+
+ # git fast-forward merge
+ git merge <branch> # it merge if graph has linear commit history histor 
+ 
+ # merge with merge commit
+ git merge --no-ff <branch>
+ 
+# --- merge conflict --- #
+# if merge conflict arises, we need to open the conlict file and resolve the cnflict.
+  git checkout <base branch| master>
+  git merge <branch name>
+  git merge <branch name> 
+
+  #if conflict arises 
+  git status 
+   #View the fileA.txt file. Notice the conflict markers in the file. That is the part of the merge that Git couldn't automatically resolve. Mannually resolve the conflict.
+  git merge <branch name>
+  # OR
+  git merge --abort # To aboart the merge
+
+# --- Tracking branch --- #
+  #list all branches local and remote
+  git branch --all
+  
+  # to see all commits from local/tracking branch
+  git log --all --oneline --graph
+  
+  # set default remote tracking to different branch
+  git remote set-head <remote> <branch>
+
 
