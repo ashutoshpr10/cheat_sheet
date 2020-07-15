@@ -111,4 +111,43 @@
   # set default remote tracking to different branch
   git remote set-head <remote> <branch>
 
+# --- fetch | pull | push --- #
+
+  # fetch command updates the tracking repository information
+  git fetch [remote]
+  
+  # git pull does 1. fetch the tracking repository 2. merge the remote to local (default : fast forward merge)
+  git pull
+  
+  # push [do git fetch or pull before push ]
+  git push -u [remote] [branch]
+
+# --- rebase ---- #
+#-----------------
+# Rebasing moves a branch to the tip of another branch. Rebasing is a form of merge and may result in merge
+
+  git checkout <branch to be rebase>
+  git rebase  master
+
+  #rebase with conflict
+  git chekout <branch>
+  git rebase master
+  # conflict occurs
+  # resolve the conflict
+  git add <modified conflict file/files>
+  git rebase --continue
+  
+
+# re-writing the history
+# --- Amending a commit --- #
+ # The git commit --amend command is a convenient way to modify the most recent commit. It lets you combine staged changes with the previous commit instead of creating an entirely new commit. 
+ git commit --amend -m "add fileA.txt" 
+ # Edit hello.py and main.py git add hello.py git commit
+ # Realize you forgot to add the changes from main.py git add main.py
+ git commit --amend --no-edit
+
+# --- interactive rebase --- #
+ # it prompt with list of commit starting from initial commit (provided) and action that you want apply on them.
+ git rebase -i <initial commit>
+
 
